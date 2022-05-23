@@ -1,0 +1,90 @@
+// Place all the styles related to the opportunities controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+div#opp_theme{
+    background-color: #fbf9e9;
+  }
+  
+  .masthead_text{
+    color: hsl(0, 100%, 0%);
+  }
+  
+  #masthead_logo{
+   position: absolute;
+   top: 20px;
+  }
+  
+  #search-area{
+    margin-top: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #dddddd;
+    border-radius: 4px 4px 0 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  
+  
+  #footer-area{
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #dddddd;
+    border-top: 1px solid #000000;
+    border-radius: 4px 4px 0 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  
+  
+  //.my-sort-arrows a:before {
+  //    content: '\21d5 \0000A0';
+  //    //content: '\21c5 '
+  //    //content: '\2B0D'
+  //     color: #428bca;
+  //}
+  
+  th {
+     font-weight: bold !important;
+     font-size: 110% !important;
+  }
+  
+  .admin_section{
+      padding: 1.1em;
+      margin-top: 1.1em;
+  }
+  
+  input[type='checkbox'] {
+      margin: 8px; 
+  }
+  
+  div.field_with_errors {
+      display: inline;
+      label {
+        color: #a94442;
+      }
+      input, textarea, select {
+        background-color: #f2dede;
+        border-color: #ebccd1;
+      }
+    }
+  
+  #flash_success{
+    margin: 5px;
+  }
+  
+  ul.level {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+  
+  ul#show_levels {
+    padding-left: 12px;
+  }
+  

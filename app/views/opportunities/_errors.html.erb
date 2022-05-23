@@ -1,0 +1,23 @@
+<% if @opportunity.errors.any? %>
+
+<div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
+
+  <div id="errors" class="panel panel-danger">
+   <div class="panel-heading">
+    <h5>
+      The <%= @opportunity.class.name.titleize.downcase %> could not be saved.     
+     Please correct the following <strong><%= pluralize(@opportunity.errors.count, "error") %></strong>:
+    </h5>
+   </div>
+
+    <ul class="list-group">
+     <% @opportunity.errors.full_messages.each do |message| %>
+       <li class="list-group-item list-group-item-danger">
+         <strong> <%= message %> </strong>
+       </li>
+     <% end %>
+    </ul>
+
+ </div>
+</div>
+<% end %>

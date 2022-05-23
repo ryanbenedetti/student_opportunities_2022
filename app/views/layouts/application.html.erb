@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<html>
+  <head>
+    <title>StudentOpportunities2022</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  </head>
+  <body>
+   <%= render 'opportunities/header' %>
+   <div id="main-container" class="container">
+
+    <!-- Flash partial -->
+
+    <%= render 'layouts/flashes'  %>  
+
+    <!-- Start Page Content -->
+
+    <div class="row">
+      <div class="col-sm-12">
+             <%= yield %>  
+      </div>
+    </div>
+  </div>
+
+  <%= render 'opportunities/footer' %>
+ </body>
+
+</html>

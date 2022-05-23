@@ -1,0 +1,106 @@
+<%= form_for(@opportunity) do |f| %>
+
+<div class="row">
+ <%= render "errors" %>  
+</div>
+
+<div class="row">
+
+ <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+  <p>
+    <%= f.label :award_name %><br/>
+    <%= f.text_field :award_name, size: 100 %>
+  </p>
+
+  <p>
+    <%= f.label :sponsor %><br/>
+    <%= f.text_field :sponsor, size: 100 %>
+  </p>
+
+  <p>
+    <%= f.label :subject_area  %><br/>
+    <%= f.text_field :subject_area , size: 100 %>
+  </p>
+
+  <div>
+   <%= f.collection_check_boxes(:level_ids, Level.all, :id, :name, :item_wrapper_class => "checkbox-inline" ) %>
+  </div>
+
+  <p>
+    <%= f.label :deadline %><br/>
+    <%= f.date_field :deadline %>
+  </p>
+
+  <p>
+    <%= f.label :amount %><br/>
+    <%= f.text_field :amount %>
+  </p>
+
+ <p>
+    <%= f.label :state %><br/>
+    <%= f.text_field :state, size: 50 %>
+  </p>
+
+  <p>
+    <%= f.label :min_gpa %><br/>
+    <%= f.text_field :min_gpa, size: 8 %>
+  </p>
+
+  <p>
+    <%= f.label :citizenship %><br/>
+     <%= f.select :citizenship, Opportunity::CITIZENSHIP_LIST, prompt: "Pick one" %>
+  </p>
+
+ <p>
+    <%= f.label :other_req %><br/>
+    <%= f.text_area :other_req, cols: 100, rows: 5 %>
+  </p>
+
+   <p>
+    <%= f.label :website, "Website URL" %><br/>
+    <%= f.text_field :website, size: 100 %>
+  </p>
+
+  <p>
+    <%= f.label :website_link_text, "Website Link Text (This field is optional. If you don't include it, the award name will be used as link text. If you enter something here, it will override the award name as the clickable text.)" %><br/>
+    <%= f.text_field :website_link_text, size: 75 %>
+  </p>
+
+   <p>
+    <%= f.label :opportunity_type %><br/>
+     <%= f.select :opportunity_type, Opportunity::OPPORTUNITY_TYPE_LIST, prompt: "Pick one" %>
+  </p>
+
+
+ <p>
+    <%= f.label :contact %><br/>
+    <%= f.text_field :contact %>
+  </p>
+
+  <p>
+    <%= f.label :is_published, "Publish?" %><br/>
+    <%= f.check_box :is_published %>
+  </p>
+  <p>
+    <%= f.label :respect_deadline, "Respect Deadline?" %><br/>
+    <%= f.check_box :respect_deadline %>
+  </p>
+  <p>
+    <%= f.label :date_reopens, "Date to Repost" %><br/>
+    <%= f.date_field :date_reopens %>
+  </p>
+
+  <p>
+    <%= f.label :admin_notes %><br/>
+    <%= f.text_area :admin_notes, cols: 100, rows: 5 %>
+  </p>
+  <p>
+    <%= f.submit %>
+    <%= link_to "Cancel", opportunities_path %>
+  </p>
+ 
+ </div>
+</div>
+
+<% end %>

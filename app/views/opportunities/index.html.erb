@@ -1,0 +1,109 @@
+
+<div class="row"><!-- row A -->
+	<div class="col-xs-12"> <!-- col-xs-12 A1 -->
+		<div id="search-area">
+			<%= search_form_for @search, html: {class: "form-inline"} do |f| %>
+
+			<!-- Form Name -->
+			<legend>
+              <h4>Search for opportunities:
+                <%= link_to 'pages/help', target: "_blank",'aria-label': 'how to search this page' do %>
+                <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+                <% end %>
+              </h4>
+          </legend>
+
+			<!-- Text input-->
+			<div class="field form-group">
+				<%= f.label :award_name_cont, "Award name:" %>
+				<%= f.text_field :award_name_cont %>
+			</div>
+
+			<div class="field form-group">
+				<%= f.label :subject_area_cont, "Subject area:" %>
+				<%= f.text_field :subject_area_cont %>
+			</div>
+
+ <div class="field form-group">
+                                <%= f.label :opportunity_type_eq, "Opportunity type:" %>
+                                <%= f.select :opportunity_type_eq, Opportunity::OPPORTUNITY_TYPE_SEARCH_LIST %>
+                        </div>
+
+                       <div class="field form-group">
+                          <%= f.label :levels_name_eq, "Level:" %>
+       	                 <%= f.select :levels_name_eq,  Level.all.collect{|c| [c.name, c.name]}.unshift(["",nil]) %>
+	               </div>
+
+			<div class="field form-group">
+				<%= f.label :state_cont, "State:" %>
+				<%= f.text_field :state_cont %>
+			</div> 
+
+			<div class="field form-group">
+				<%= f.label :citizenship_eq, "Citizenship:" %>
+                                <%= f.select :citizenship_eq, Opportunity::CITIZENSHIP_SEARCH_LIST %>
+			</div>
+
+			<div class="field form-group">
+                <%= f.label :sponsor_cont, "Sponsor:" %>
+                <%= f.text_field :sponsor_cont %>
+            </div>
+
+			<div class="field form-group"> 
+				<%= f.submit "Search", class: 'btn btn-primary btn-sm' %>
+				<%= link_to "Clear Search", opportunities_path, class: 'btn btn-primary btn-sm' %>  
+			</div>
+			<% end %>
+		</div><!-- end search area -->
+	</div><!-- end col-xs-12 A1 -->
+</div><!-- end row A -->
+<div class="row"> <!-- row B -->
+	<div class="col-xs-12"><!-- col-xs-12 B1 -->
+		<h3><%= pluralize(@opportunities.size, "opportunity") %>
+                         of <%= @total %> total. 
+        </h3>
+	
+        </div><!-- end col-xs-12 B1 -->
+	<div class="row"><!-- row C -->
+		<div class="col-xs-12"><!-- col-xs-12 C1 -->
+			<table class="tablesorter tablesorter-ice">
+				<thead>
+					<tr>
+						<th> Award Name </th>
+						<th> Subject Area </th>
+                                                <th> Levels </th>  
+						<th> State </th>
+						<th> Citizenship </th>
+						<th> Deadline </th>
+                                                <th> Opportunity Type </th>
+                        <th> Sponsor </th>
+                        <th> Published? </th>
+                        <th> Respect Deadline? </th>
+                        <th> Scholarship re-post date </th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<% @opportunities.each do |opportunity| %>
+					<tr>  
+						<td><strong><%= link_to(opportunity.award_name, opportunity_path(opportunity)) %></strong></td>   
+						<td> <%= opportunity.subject_area %> </td>
+                         <td> <ul class="level"> <% opportunity.levels.each do |level| %>
+                                   <li><%= level.name %></li>
+                                   <% end %>
+                               </ul>  </td> 
+			<td> <%= opportunity.state %></td>
+			<td> <%= opportunity.citizenship %></td>
+			<td> <%= opportunity.deadline %></td>
+                        <td> <%= opportunity.opportunity_type %></td>
+                     
+                      <td> <%= opportunity.sponsor  %> </td>
+                      <td> <%= opportunity.is_published %></td>
+                      <td> <%= opportunity.respect_deadline %> </td>
+                      <td> <%= opportunity.date_reopens %> </td>
+				<% end %>
+					</tbody>
+				</table>
+			</div><!-- end col-xs-12 C1 -->
+		</div><!-- end row C -->
+	</div><!-- end row B -->

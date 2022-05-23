@@ -1,0 +1,126 @@
+<article>
+  <header>
+  <h3>Award Name: <strong><%= @opportunity.award_name %></strong></h3>
+  </header>
+
+<div class="row">
+    <div class="col-xs-3"> <strong>Sponsor:</strong></div>
+    <div class="col-xs-9" ><%= @opportunity.sponsor %></div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-xs-3"><strong>Subject Area:</strong></div>
+    <div class="col-xs-9"> <%= @opportunity.subject_area  %></div>
+  </div>
+
+<div class="row">
+    <div class="col-xs-3"> <strong>Levels:</strong></div>
+    <div class="col-xs-9">
+      <ul id="show_levels">
+        <% @levels.each do |level| %>
+         <li><%= level.name %></li>
+        <% end %>
+      </ul>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xs-3" ><strong>Deadline:</strong></div>
+    <div class="col-xs-9" ><%= @opportunity.deadline %></div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-xs-3" ><strong>Amount:</strong></div>
+    <div class="col-xs-9" > <%= @opportunity.amount %></div>
+  </div>
+
+
+<div class="row">
+    <div class="col-xs-3" ><strong>State:</strong></div>
+    <div class="col-xs-9" ><%= @opportunity.state %></div>
+  </div>
+
+<div class="row">
+    <div class="col-xs-3" ><strong>Minimum G.P.A.:</strong></div>
+    <div class="col-xs-9" ><%= @opportunity.min_gpa %></div>
+  </div>
+
+ <div class="row">
+    <div class="col-xs-3" ><strong>Citizenship:</strong></div>
+    <div class="col-xs-9" ><%= @opportunity.citizenship %></div>
+  </div>
+
+ <div class="row">
+    <div class="col-xs-3" ><strong>Other Requirements:</strong></div>
+    <div class="col-xs-9" ><%= @opportunity.other_req%></div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-3" ><strong>Website:</strong></div>
+    <div class="col-xs-9" > 
+ 
+      <% if @opportunity.website.blank? %>
+         No website link available
+      <% else %>
+         <%= link_to(link_text_to_display(@opportunity), @opportunity.website, :target => "_blank") %> 
+      <% end %>
+
+    </div>    
+ </div>
+
+  <div class="row">
+    <div class="col-xs-3" ><strong>Opportunity Type:</strong></div>
+    <div class="col-xs-9" ><%= @opportunity.opportunity_type %></div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-3" ><strong>UP Contact:</strong></div>
+    <div class="col-xs-9" > <%= mail_to( @opportunity.contact, @opportunity.contact,  subject: "Student Opportunities Question") %> </div>
+  </div>
+
+
+<div class="admin_section panel panel-primary">
+  <div class="panel-heading">Admin. area</div>
+  <div class="panel-body">
+  
+  <div class="row">
+    <div class="col-xs-3" ><strong>Published?</strong></div>
+    <div class="col-xs-9" ><%= @opportunity.is_published %></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3" ><strong>Respect Deadline?</strong></div>
+    <div class="col-xs-9" ><%= @opportunity.respect_deadline %></div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-3" ><strong>Date to Repost:</strong></div>
+    <div class="col-xs-9" ><%= @opportunity.date_reopens %></div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-3" ><strong>Admin Notes:</strong></div>
+    <div class="col-xs-9" ><%= @opportunity.admin_notes %></div>
+  </div>
+
+   <div class="row">
+    <div class="col-xs-3"><strong>Updated On:</strong></div>
+    <div class="col-xs-9"> <%= @opportunity.updated_at  %></div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-3"><strong>Who Last Updated:</strong></div>
+    <div class="col-xs-9"> <%= @opportunity.updated_by  %></div>
+  </div>
+  
+    </div>
+   </div>
+  </div>
+
+</article>
+
+<%= link_to "Return to Search Results", url_for(:back)  %>
+| <%= link_to("Edit Opportunity", edit_opportunity_path(@opportunity)) %> |
+<%= link_to "Delete", opportunity_path(@opportunity), method: :delete, data: {confirm: "Are you sure?"} %>
